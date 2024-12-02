@@ -76,7 +76,8 @@ public class UserRegistration {
         if (isValidPassword(password)) {
             System.out.println("Valid Password!");
         } else {
-            System.out.println("Invalid Password. Ensure it has at least 8 characters");
+            System.out.println("Invalid Password. Ensure it has at least 8 characters,Atlest One Upper Case"
+            		+ "");
         }
     }
         
@@ -84,7 +85,7 @@ public class UserRegistration {
 		// Method for Password
 	private static boolean isValidPassword(String password) {
 		
-        return password.matches("^.{8,}$");
+        return password.matches("^[A-Z][a-z].{8,}$");
 	}
 	
 	//Method for Mobilenumber
