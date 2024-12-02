@@ -97,7 +97,7 @@ public class UserRegistration {
 	//Method for Email
 	private static boolean isValidEmail(String email)
 	{
-		return email.matches("^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?$");
+	    return email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$");
 	}
 	
 	// Method for LastName
