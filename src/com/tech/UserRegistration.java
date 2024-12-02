@@ -23,6 +23,14 @@ public class UserRegistration {
 		System.out.println("Enter the Email Id");
 		String email=sc.nextLine();
 		
+		//Input for Phone Number
+		System.out.println("Enter the phone Number :- ");
+		String phone=sc.nextLine();
+		
+////////////////////////////////////////////////////////////////////////////////////////////////////////////		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
 		// First Name Of User
 		if(isValidFirstName(firstname))
 		{
@@ -52,11 +60,26 @@ public class UserRegistration {
             System.out.println("Invalid email address. Please ensure it follows the format :- abc.xyz@bl.co");
 
         }
+        //Phone Number of User
+        if(isValidMobileNumber(phone))
+        {
+        	System.out.println("Valid Phone Number");
+        }
+        else
+        {
+            System.out.println("Invalid mobile number. Please ensure it follows the format: 91 9919819801");
+        }
+        
 		
 		
 	}
 
-	private static boolean isValidEmail(String email) {
+	private static boolean isValidMobileNumber(String mobileNumber) 
+	{
+        return mobileNumber.matches("^(\\d{2})?\\s?\\d{10}$");
+    }
+	private static boolean isValidEmail(String email)
+	{
 		return email.matches("^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?$");
 	}
 
