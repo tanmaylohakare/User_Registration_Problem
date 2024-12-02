@@ -85,7 +85,7 @@ public class UserRegistration {
 		// Method for Password
 	private static boolean isValidPassword(String password) {
 		
-        return password.matches("^[A-Z][a-z].{8,}$");
+        return password.matches("^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$");
 	}
 	
 	//Method for Mobilenumber
