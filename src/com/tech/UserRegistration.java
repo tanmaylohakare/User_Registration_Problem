@@ -27,6 +27,9 @@ public class UserRegistration {
 		System.out.println("Enter the phone Number :- ");
 		String phone=sc.nextLine();
 		
+		System.out.println("Enter your Password :- ");
+        String password = sc.nextLine();
+		
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
@@ -69,28 +72,45 @@ public class UserRegistration {
         {
             System.out.println("Invalid mobile number. Please ensure it follows the format: 91 9919819801");
         }
+        //  Vadilate Password
+        if (isValidPassword(password)) {
+            System.out.println("Valid Password!");
+        } else {
+            System.out.println("Invalid Password. Ensure it has at least 8 characters");
+        }
+    }
         
 		
+		// Method for Password
+	private static boolean isValidPassword(String password) {
 		
+        return password.matches("^.{8,}$");
 	}
-
+	
+	//Method for Mobilenumber
 	private static boolean isValidMobileNumber(String mobileNumber) 
 	{
         return mobileNumber.matches("^(\\d{2})?\\s?\\d{10}$");
     }
+	
+	//Method for Email
 	private static boolean isValidEmail(String email)
 	{
 		return email.matches("^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?$");
 	}
-
+	
+	// Method for LastName
 	private static boolean isValidLastName(String Lastname) {
 		
 		return Lastname.matches("[A-Z][a-z]{2,}");
 	}
 
+	//Method for Name
 	private static boolean isValidFirstName(String name) {
 		
         return name.matches("[A-Z][a-z]{2,}");
 	}
+	
+	
 
 }
