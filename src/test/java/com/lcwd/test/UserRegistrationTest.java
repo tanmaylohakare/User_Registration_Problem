@@ -12,8 +12,8 @@ public class UserRegistrationTest {
     UserRegistration userRegistration = new UserRegistration();
 
     @Test
-    void testValidFirstName_HappyCase() throws InvalidFirstNameException {
-        userRegistration.isValidFirstName("Tanmay"); // Should not throw an exception
+    void testValidFirstName_HappyCase() {
+        assertDoesNotThrow(() -> userRegistration.isValidFirstName("Tanmay")); // Should not throw an exception
     }
 
     @Test
@@ -22,8 +22,8 @@ public class UserRegistrationTest {
     }
 
     @Test
-    void testValidLastName_HappyCase() throws InvalidLastNameException {
-        userRegistration.isValidLastName("Lohakare"); // Should not throw an exception
+    void testValidLastName_HappyCase() {
+        assertDoesNotThrow(() -> userRegistration.isValidLastName("Lohakare")); // Should not throw an exception
     }
 
     @Test
@@ -33,9 +33,9 @@ public class UserRegistrationTest {
     }
 
     @Test
-    void testValidEmail_HappyCase() throws InvalidEmailException {
-        userRegistration.isValidEmail("abc@yahoo.com"); // Should not throw an exception
-        userRegistration.isValidEmail("abc.100@abc.com");
+    void testValidEmail_HappyCase() {
+        assertDoesNotThrow(() -> userRegistration.isValidEmail("abc@yahoo.com")); // Should not throw an exception
+        assertDoesNotThrow(() -> userRegistration.isValidEmail("abc.100@abc.com"));
     }
 
     @Test
@@ -46,8 +46,8 @@ public class UserRegistrationTest {
     }
 
     @Test
-    void testValidMobileNumber_HappyCase() throws InvalidMobileNumberException {
-        userRegistration.isValidMobileNumber("91 7499254226"); // Should not throw an exception
+    void testValidMobileNumber_HappyCase() {
+        assertDoesNotThrow(() -> userRegistration.isValidMobileNumber("91 7499254226")); // Should not throw an exception
     }
 
     @Test
@@ -57,8 +57,8 @@ public class UserRegistrationTest {
     }
 
     @Test
-    void testValidPassword_HappyCase() throws InvalidPasswordException, InvalidMobileNumberException {
-        userRegistration.isValidPassword("Abc@1234"); // Should not throw an exception
+    void testValidPassword_HappyCase() {
+        assertDoesNotThrow(() -> userRegistration.isValidPassword("Abc@1234")); // Should not throw an exception
     }
 
     @Test
@@ -80,26 +80,26 @@ public class UserRegistrationTest {
             "abc@gmail.com.com",
             "Abc+100@gmail.com"
     })
-    void testvalidEmails(String email) throws InvalidEmailException {
-        userRegistration.isValidEmail(email);
+    void testValidEmails(String email) {
+        assertDoesNotThrow(() -> userRegistration.isValidEmail(email)); // No exception should be thrown for valid emails
     }
-        @ParameterizedTest
-        @ValueSource(strings = {
-                "abc",
-                "abc@.com.my",
-                "abc123@gmail.a",
-                "abc123@.com",
-                "abc123@.com.com",
-                ".abc@abc.com",
-                "abc()*@gmail.com",
-                "abc@%*.com",
-                "abc..2002@gmail.com",
-                "abc.@gmail.com",
-                "abc@abc@gmail.com",
-                "abc@gmail.com.1a"
-        })
-        void testInvalidEmails(String email){
-            assertThrows(InvalidEmailException.class,() ->userRegistration.isValidEmail(email));
-}
-}
 
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "abc",
+            "abc@.com.my",
+            "abc123@gmail.a",
+            "abc123@.com",
+            "abc123@.com.com",
+            ".abc@abc.com",
+            "abc()*@gmail.com",
+            "abc@%*.com",
+            "abc..2002@gmail.com",
+            "abc.@gmail.com",
+            "abc@abc@gmail.com",
+            "abc@gmail.com.1a"
+    })
+    void testInvalidEmails(String email) {
+        assertThrows(InvalidEmailException.class, () -> userRegistration.isValidEmail(email)); // Should throw InvalidEmailException for invalid emails
+    }
+}
